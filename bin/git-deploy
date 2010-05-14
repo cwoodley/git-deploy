@@ -11,6 +11,7 @@ require 'uri'
 require 'net/ftp'
 require 'net/ssh'
 require 'net/sftp'
+require 'ptools'
 require 'tempfile'
 
 # We figure out only which files need updating 
@@ -196,7 +197,7 @@ services.each do |uri, options|
         case modifier
         when 'A', 'M'
           puts "Uploading #{file}"
-          ftp.puttextfile(file, file)
+          ftp.put(file, file)
         when 'D'
           begin
             puts "Deleting #{file}"
